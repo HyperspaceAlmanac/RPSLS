@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace RPSLS
 {
-    abstract class Gesture
+    class Paper : Gesture
     {
     }
 }
