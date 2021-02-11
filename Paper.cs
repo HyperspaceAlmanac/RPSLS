@@ -8,5 +8,12 @@ namespace RPSLS
 {
     class Paper : Gesture
     {
+        public Paper() : base(GestureType.Paper)
+        {
+        }
+        public override string Display()
+        {
+            return "Paper";
+        }
     }
 }

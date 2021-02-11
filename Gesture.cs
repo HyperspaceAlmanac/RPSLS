@@ -44,6 +44,8 @@ namespace RPSLS
         {
             return gestureType;
         }
+
+        public abstract string Display();
         // Compare this gesture to the other one
         public static int CompareGestures(Gesture left, Gesture right)
         {

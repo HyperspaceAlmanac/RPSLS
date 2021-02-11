@@ -8,5 +8,12 @@ namespace RPSLS
 {
     class Scissors : Gesture
     {
+        public Scissors() : base(GestureType.Scissors)
+        {
+        }
+        public override string Display()
+        {
+            return "Scissors";
+        }
     }
 }

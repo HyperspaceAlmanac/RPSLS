@@ -8,5 +8,12 @@ namespace RPSLS
 {
     class Rock : Gesture
     {
+        public Rock() : base(GestureType.Rock)
+        {
+        }
+        public override string Display()
+        {
+            return "Rock";
+        }
     }
 }

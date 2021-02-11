@@ -8,5 +8,12 @@ namespace RPSLS
 {
     class Lizard : Gesture
     {
+        public Lizard() : base(GestureType.Lizard)
+        {
+        }
+        public override string Display()
+        {
+            return "Lizard";
+        }
     }
 }

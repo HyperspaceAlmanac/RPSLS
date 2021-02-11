@@ -8,5 +8,12 @@ namespace RPSLS
 {
     class Spock : Gesture
     {
+        public Spock() : base(GestureType.Spock)
+        {
+        }
+        public override string Display()
+        {
+            return "Spock";
+        }
     }
 }

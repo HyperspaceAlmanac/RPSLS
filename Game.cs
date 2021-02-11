@@ -19,6 +19,11 @@ namespace RPSLS
         private List<Gesture> gestures = new List<Gesture>();
         private int roundsToWin;
 
+        // Game constructor will generate the Gestures and put them into list
+        public Game()
+        {
+
+        }
         // Handles all of the game logic
         public void RunGame()
         {
