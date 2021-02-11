@@ -18,8 +18,10 @@ namespace RPSLS
     class Game
     {
         private List<Gesture> gestureList = new List<Gesture>();
-        private int roundsToWin;
+        private int totalRounds;
         private bool playerOneTurn;
+        private bool vsNPC;
+        private bool displayedMessage;
         private Player player1;
         private Player player2;
 
@@ -38,6 +40,7 @@ namespace RPSLS
         // Handles all of the game logic
         public void RunGame()
         {
+            displayedMessage = false;
             GameState state = GameState.SelectMode;
             while (state != GameState.Exit)
             {
@@ -66,13 +69,49 @@ namespace RPSLS
 
         private GameState SelectMode()
         {
-            Console.WriteLine("Welcome to Rock Paper Scissors Lizard Spock!");
-            return GameState.Exit;
+            if (!displayedMessage)
+            {
+                Console.WriteLine("Welcome to Rock Paper Scissors Lizard Spock!");
+                ExplainRules();
+                displayedMessage = true;
+            }
+            Console.WriteLine("Please enter 1 for single player, or 2 for multiplayer");
+            ExitGamePrompt();
+            int result = HandleNumberInput(Console.ReadLine());
+            if (result == 0)
+            {
+                return GameState.Exit;
+            }
+            else if (result == -1)
+            {
+                Console.WriteLine("Invalid input, please try again");
+                return GameState.SelectMode;
+            }
+            else
+            {
+                if (result == 1)
+                {
+                    vsNPC = true;
+                    displayedMessage = false;
+                    return GameState.SelectRounds;
+                }
+                else if (result == 2)
+                {
+                    vsNPC = false;
+                    displayedMessage = false;
+                    return GameState.SelectRounds;
+                }
+                else
+                {
+                    Console.WriteLine("Please enter 1 or 2");
+                    return GameState.SelectMode;
+                }
+            }
         }
 
         private GameState SelectRounds()
         {
-            Console.WriteLine("Please enter the number of rounds");
+            Console.WriteLine("Please enter how many rounds the game is best of");
             Console.WriteLine("It should be an odd number from 1-99");
             return GameState.Exit;
         }
@@ -91,13 +130,28 @@ namespace RPSLS
 
         }
 
+        private void ExplainRules()
+        {
+            Console.WriteLine("=============");
+            Console.WriteLine("This game is like Rock, Paper, Scissors, but with two more options");
+            Console.WriteLine("Rock beats Scissors and Lizard, but loses to Paper and Spock");
+            Console.WriteLine("Paper beats Rock and Spock, but loses to Scissors and Lizard");
+            Console.WriteLine("Scissors beats Paper and Lizard, but loses to Spock and Rock");
+            Console.WriteLine("Lizard beats Spock and Paper, but loses to Rock and Scissors");
+            Console.WriteLine("Spock beats Scissors and Rock, but loses to Lizard and Paper");
+            Console.WriteLine("=============");
+        }
+        private void ExitGamePrompt()
+        {
+            Console.WriteLine("Or enter \"exit\" to exit the game");
+        }
         private bool GestureIndexIsValid(int index)
         {
             return index < gestureList.Count;
         }
         private bool PlayerWins(Player player)
         {
-            return false;
+            return player.Wins(totalRounds);
         }
         private GameState GameOver()
         {
@@ -131,8 +185,9 @@ namespace RPSLS
             //DisplayTest();
             //RockSanityTest();
             //CheckAllCases();
-            DisplayOptions();
+            //DisplayOptions();
 
+            // Game logic tests
         }
 
         // Tests kept as private, only called by public runTests() method
