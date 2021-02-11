@@ -67,7 +67,7 @@ namespace RPSLS
             {
                 return 2;
             }
-            else if (gest.GetGesture() == GestureType.Spock)
+            else if (gest.GetGesture() == GestureType.Lizard)
             {
                 return 3;
             }

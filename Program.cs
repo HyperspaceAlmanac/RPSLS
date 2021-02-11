@@ -11,7 +11,9 @@ namespace RPSLS
         static void Main(string[] args)
         {
             Game game = new Game();
-            game.RunGame();
+            game.runTests();
+            //game.RunGame();
+            Console.ReadLine();
         }
     }
 }
