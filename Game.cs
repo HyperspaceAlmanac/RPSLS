@@ -18,6 +18,9 @@ namespace RPSLS
     {
         private List<Gesture> gestureList = new List<Gesture>();
         private int roundsToWin;
+        private bool playerOneTurn;
+        private Player player1;
+        private Player player2;
 
         // Game constructor will generate the Gestures and put them into list
         public Game()
@@ -53,14 +56,16 @@ namespace RPSLS
                         break;
                 }
             }
+            Console.WriteLine("Exiting Game. Press \"Enter\" to close application");
             Console.ReadLine();
         }
 
         private GameState SelectMode()
         {
-            Console.WriteLine("Starting Game");
+            Console.WriteLine("Welcome to Rock Paper Scissors Lizard Spock!");
             return GameState.Exit;
         }
+
         private GameState SelectRounds()
         {
             return GameState.Exit;
