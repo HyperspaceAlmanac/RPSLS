@@ -78,7 +78,7 @@ namespace RPSLS
         {
             //DisplayTest();
             //RockSanityTest();
-            
+            //CheckAllCases();
         }
 
         private void DisplayTest()
@@ -98,6 +98,20 @@ namespace RPSLS
             Console.WriteLine($"Rock beats Lizard, should return 1. {gestureList[0]}, {gestureList[3]}: {Gesture.CompareGestures(gestureList[0], gestureList[3])}");
             Console.WriteLine($"Rock loses to Paper, should return -1. {gestureList[0]}, {gestureList[1]}: {Gesture.CompareGestures(gestureList[0], gestureList[1])}");
             Console.WriteLine($"Rock loses to Spock, should return -1. {gestureList[0]}, {gestureList[4]}: {Gesture.CompareGestures(gestureList[0], gestureList[4])}");
+        }
+
+        private void CheckAllCases()
+        {
+            int result;
+            for (int i = 0; i < gestureList.Count; i++)
+            {
+                for (int j = 0; j < gestureList.Count; j++)
+                {
+                    // Fun with 2x ternary operator
+                    result = Gesture.CompareGestures(gestureList[i], gestureList[j]);
+                    Console.WriteLine($"{gestureList[i].Display()}" + (result == 0 ? " is equal to " : result == 1 ? " beats " : " loses to ") + $"{gestureList[j].Display()}");
+                }
+            }
         }
 
     }
