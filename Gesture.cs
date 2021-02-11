@@ -24,7 +24,7 @@ namespace RPSLS
         // Lizard:  -1,  1, -1,  0,  1 
         // Spock:    1, -1,  1, -1,  0 
 
-        private static readonly int[,] gestureComparisonTable = new int[5, 5] {
+        private static readonly int[,] GESTURECOMPARISONTABLE = new int[5, 5] {
             {0, -1, 1, 1, -1},
             {1, 0, -1, -1, 1},
             {-1, 1, 0, 1, -1},
@@ -38,26 +38,34 @@ namespace RPSLS
             // Table is read as leftIndex beats rightIndex
 
         }
+        // Prevent GestureType enum from being changed from outside
+        // Only have this getter function
+        public GestureType GetGesture()
+        {
+            return gestureType;
+        }
         // Compare this gesture to the other one
         public static int CompareGestures(Gesture left, Gesture right)
         {
-            return 0;
+            int leftIndex = GestureToIndex(left);
+            int rightIndex = GestureToIndex(right);
+            return GESTURECOMPARISONTABLE[leftIndex, rightIndex];
         }
-        private static int GestureToIndex(GestureType gest)
+        private static int GestureToIndex(Gesture gest)
         {
-            if (gest == GestureType.Rock)
+            if (gest.GetGesture() == GestureType.Rock)
             {
                 return 0;
             }
-            else if (gest == GestureType.Paper)
+            else if (gest.GetGesture() == GestureType.Paper)
             {
                 return 1;
             }
-            else if (gest == GestureType.Scissors)
+            else if (gest.GetGesture() == GestureType.Scissors)
             {
                 return 2;
             }
-            else if (gest == GestureType.Spock)
+            else if (gest.GetGesture() == GestureType.Spock)
             {
                 return 3;
             }
