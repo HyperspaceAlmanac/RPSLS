@@ -19,10 +19,10 @@ namespace RPSLS
                 rand = new Random();
             }
         }
-        public override int SelectGesture()
+        // NPC will override it to randomly select a gesture from list
+        public override Gesture SelectGesture()
         {
-            // Return 1-5
-            return rand.Next(1, 6);
+            return gestureList[rand.Next(gestureList.Count)];
         }
     }
 }

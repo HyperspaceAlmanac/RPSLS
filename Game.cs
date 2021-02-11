@@ -17,7 +17,6 @@ namespace RPSLS
     }
     class Game
     {
-        private List<Gesture> gestureList = new List<Gesture>();
         private int totalRounds;
         private bool playerOneTurn;
         private bool vsNPC;
@@ -31,11 +30,6 @@ namespace RPSLS
         // Game constructor will generate the Gestures and put them into list
         public Game()
         {
-            gestureList.Add(new Rock());
-            gestureList.Add(new Paper());
-            gestureList.Add(new Scissors());
-            gestureList.Add(new Lizard());
-            gestureList.Add(new Spock());
         }
         // Handles all of the game logic
         public void RunGame()
@@ -103,7 +97,7 @@ namespace RPSLS
                 }
                 else
                 {
-                    Console.WriteLine("Please enter 1 or 2");
+                    Console.WriteLine("The nubmer is not 1 or 2. Please enter 1 or 2");
                     return GameState.SelectMode;
                 }
             }
@@ -118,16 +112,6 @@ namespace RPSLS
         private GameState TakeTurn()
         {
             return GameState.Exit;
-        }
-        private void DisplayOptions()
-        {
-            Console.WriteLine("These are the available gestures:");
-            for (int i = 0; i < gestureList.Count; i++)
-            {
-                Console.Write((i == 0 ? "" : ", ") + $"{i + 1}: {gestureList[i].Display()}");
-            }
-            Console.WriteLine();
-
         }
 
         private void ExplainRules()
@@ -145,10 +129,7 @@ namespace RPSLS
         {
             Console.WriteLine("Or enter \"exit\" to exit the game");
         }
-        private bool GestureIndexIsValid(int index)
-        {
-            return index < gestureList.Count;
-        }
+
         private bool PlayerWins(Player player)
         {
             return player.Wins(totalRounds);
@@ -181,48 +162,7 @@ namespace RPSLS
 
         public void runTests()
         {
-            // Basic Gesture functionality tests
-            //DisplayTest();
-            //RockSanityTest();
-            //CheckAllCases();
-            //DisplayOptions();
-
             // Game logic tests
         }
-
-        // Tests kept as private, only called by public runTests() method
-        private void DisplayTest()
-        {
-            Console.WriteLine("Gesture.Display() Test");
-            foreach (Gesture g in gestureList)
-            {
-                Console.WriteLine(g.Display());
-            }
-        }
-
-        private void RockSanityTest()
-        {
-            Console.WriteLine("Basic Rock comparison test");
-            Console.WriteLine($"Rock equals Rock, should return 0. {gestureList[0]}, {gestureList[0]}: {Gesture.CompareGestures(gestureList[0], gestureList[0])}");
-            Console.WriteLine($"Rock beats Scissors, should return 1. {gestureList[0]}, {gestureList[2]}: {Gesture.CompareGestures(gestureList[0], gestureList[2])}");
-            Console.WriteLine($"Rock beats Lizard, should return 1. {gestureList[0]}, {gestureList[3]}: {Gesture.CompareGestures(gestureList[0], gestureList[3])}");
-            Console.WriteLine($"Rock loses to Paper, should return -1. {gestureList[0]}, {gestureList[1]}: {Gesture.CompareGestures(gestureList[0], gestureList[1])}");
-            Console.WriteLine($"Rock loses to Spock, should return -1. {gestureList[0]}, {gestureList[4]}: {Gesture.CompareGestures(gestureList[0], gestureList[4])}");
-        }
-
-        private void CheckAllCases()
-        {
-            int result;
-            for (int i = 0; i < gestureList.Count; i++)
-            {
-                for (int j = 0; j < gestureList.Count; j++)
-                {
-                    // Fun with 2x ternary operator
-                    result = Gesture.CompareGestures(gestureList[i], gestureList[j]);
-                    Console.WriteLine($"{gestureList[i].Display()}" + (result == 0 ? " is equal to " : result == 1 ? " beats " : " loses to ") + $"{gestureList[j].Display()}");
-                }
-            }
-        }
-
     }
 }
