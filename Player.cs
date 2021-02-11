@@ -11,17 +11,35 @@ namespace RPSLS
         public static readonly int RNG_SEED = 100;
         protected List<Gesture> gestureList;
         protected int wins;
+        protected int playerNumber;
 
-        public Player()
+        public Player(int playerNum)
         {
             // For now, gesture list will be the same for every player
-            // It can be extended to have different set of available options 
+            // It can be extended to have different set of available options
+            playerNumber = playerNum;
             gestureList = new List<Gesture>() { new Rock(), new Scissors(), new Paper(), new Lizard(), new Spock() };
+        }
+        public virtual void DisplayPlayer()
+        {
+            Console.WriteLine("=============");
+            Console.WriteLine("Player " + playerNumber + "'s turn");
+            Console.WriteLine("=============");
+        }
+        public virtual void AfterChoice(Gesture g)
+        {
+            Console.WriteLine("Player " + playerNumber + " has selected " + g.Display());
+            Console.WriteLine("Press \"Enter\" to contiue");
+            Console.ReadLine();
         }
         public abstract Gesture SelectGesture();
         public void WinsRound()
         {
             wins += 1;
+        }
+        public int RoundsWon()
+        {
+            return wins;
         }
         public bool Wins(int numRounds)
         {

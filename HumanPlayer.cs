@@ -8,10 +8,17 @@ namespace RPSLS
 {
     class HumanPlayer : Player
     {
+        public HumanPlayer(int playerNum) : base(playerNum)
+        {
+            // Nothing to do here for now
+        }
         public override Gesture SelectGesture()
         {
+            DisplayPlayer();
             DisplayOptions();
-            return AskUserForInput();
+            Gesture move = AskUserForInput();
+            AfterChoice(move);
+            return move;
         }
 
         // Ask user for input until they type something valid
@@ -22,7 +29,7 @@ namespace RPSLS
             bool tryAgain = true;
             do
             {
-                Console.WriteLine("Please Enter a number 1-5");
+                Console.WriteLine("Please Enter a number 1-5:");
                 str = Console.ReadLine();
                 switch (str)
                 {
