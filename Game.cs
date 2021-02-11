@@ -56,20 +56,33 @@ namespace RPSLS
             Console.ReadLine();
         }
 
-        public GameState SelectMode()
+        private GameState SelectMode()
         {
             Console.WriteLine("Starting Game");
             return GameState.Exit;
         }
-        public GameState SelectRounds()
+        private GameState SelectRounds()
         {
             return GameState.Exit;
         }
-        public GameState TakeTurn()
+        private GameState TakeTurn()
         {
             return GameState.Exit;
         }
-        public GameState GameOver()
+        private void DisplayOptions()
+        {
+
+        }
+
+        private bool GestureIndexIsValid(int index)
+        {
+            return index < gestureList.Count;
+        }
+        private bool PlayerWins(Player player)
+        {
+            return false;
+        }
+        private GameState GameOver()
         {
             return GameState.Exit;
         }
@@ -81,6 +94,7 @@ namespace RPSLS
             //CheckAllCases();
         }
 
+        // Tests kept as private, only called by public runTests() method
         private void DisplayTest()
         {
             Console.WriteLine("Gesture.Display() Test");
