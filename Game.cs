@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
 namespace RPSLS
@@ -21,6 +22,9 @@ namespace RPSLS
         private bool playerOneTurn;
         private Player player1;
         private Player player2;
+
+        private static readonly Regex zeroRegex = new Regex(@"^0+$");
+        private static readonly Regex numberRegex = new Regex(@"^\d+$");
 
         // Game constructor will generate the Gestures and put them into list
         public Game()
@@ -68,6 +72,8 @@ namespace RPSLS
 
         private GameState SelectRounds()
         {
+            Console.WriteLine("Please enter the number of rounds");
+            Console.WriteLine("It should be an odd number from 1-99");
             return GameState.Exit;
         }
         private GameState TakeTurn()
@@ -96,6 +102,27 @@ namespace RPSLS
         private GameState GameOver()
         {
             return GameState.Exit;
+        }
+
+        // Static function to handle IO
+        // 0 for exit, -1 for not number
+        // Otherwise return a number
+        public static int HandleNumberInput(string str)
+        {
+            if (str == "Exit")
+            {
+                return 0;
+            } else if (str.Length > 2 || Game.zeroRegex.IsMatch(str)) {
+                return -1;
+            }
+            if (Game.numberRegex.IsMatch(str))
+            {
+                return Convert.ToInt32(str);
+            }
+            else
+            {
+                return -1;
+            }
         }
 
         public void runTests()
