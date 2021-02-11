@@ -8,6 +8,7 @@ namespace RPSLS
 {
     abstract class Player
     {
+        public static readonly int RNG_SEED = 100;
         protected int wins;
         public abstract int SelectGesture();
         public void WinsRound()
@@ -19,6 +20,7 @@ namespace RPSLS
             // 3 rounds = 2 to win, 5 -> 3 , 7 -> 4, 9 -> 5
             // 4 = can tie, 6 = can tie
             // Game's responsibility to ensure that it is odd
+            // Enforce rounds > 2 on Game side
             return wins >= numRounds / 2 + 1;
         }
     }

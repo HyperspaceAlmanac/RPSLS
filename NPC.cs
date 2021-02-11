@@ -8,11 +8,21 @@ namespace RPSLS
 {
     class NPC : Player
     {
-        public NPC(bool rngSeed=false) {
+        private Random rand;
+        public NPC(bool useRngSeed=false) {
+            if (useRngSeed)
+            {
+                rand = new Random(Player.RNG_SEED);
+            }
+            else
+            {
+                rand = new Random();
+            }
         }
         public override int SelectGesture()
         {
-            return 0;
+            // Return 1-5
+            return rand.Next(1, 6);
         }
     }
 }

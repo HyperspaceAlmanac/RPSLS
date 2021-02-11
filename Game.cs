@@ -71,6 +71,12 @@ namespace RPSLS
         }
         private void DisplayOptions()
         {
+            Console.WriteLine("These are the available gestures:");
+            for (int i = 0; i < gestureList.Count; i++)
+            {
+                Console.Write((i == 0 ? "" : ", ") + $"{i + 1}: {gestureList[i].Display()}");
+            }
+            Console.WriteLine();
 
         }
 
@@ -89,9 +95,12 @@ namespace RPSLS
 
         public void runTests()
         {
+            // Basic Gesture functionality tests
             //DisplayTest();
             //RockSanityTest();
             //CheckAllCases();
+            DisplayOptions();
+
         }
 
         // Tests kept as private, only called by public runTests() method
