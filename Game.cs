@@ -118,7 +118,7 @@ namespace RPSLS
             {
                 return GameState.Exit;
             }
-            // 1 is an interseting case... I guess just hardcode handle it here
+            // 1 and 2 are valid, but less than 3
             else if (result == -1 || result == 1 || result == 2)
             {
                 Console.WriteLine("Invalid Input. Please try again");
