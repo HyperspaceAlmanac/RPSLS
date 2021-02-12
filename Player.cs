@@ -53,10 +53,10 @@ namespace RPSLS
         public void RunGestureTests()
         {
             // Basic Gesture functionality tests
-            //DisplayTest();
-            //RockSanityTest();
-            //CheckAllCases();
-            //DisplayOptions();
+            DisplayTest();
+            RockSanityTest();
+            CheckAllCases();
+            Console.ReadLine();
         }
 
         private void DisplayTest()
@@ -87,7 +87,7 @@ namespace RPSLS
                 {
                     // Fun with 2x ternary operator
                     result = Gesture.CompareGestures(gestureList[i], gestureList[j]);
-                    Console.WriteLine($"{gestureList[i].Display()}" + (result == 0 ? " is equal to " : result == 1 ? " beats " : " loses to ") + $"{gestureList[j].Display()}");
+                    Console.WriteLine($"{gestureList[i].Display()}" + (result == 0 ? " is equal to " : result == 1 ? " " + gestureList[i].GetVerb(gestureList[j].LoseVerbs()) + " " : " loses to ") + $"{gestureList[j].Display()}");
                 }
             }
         }

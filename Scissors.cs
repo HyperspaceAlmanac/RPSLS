@@ -10,6 +10,8 @@ namespace RPSLS
     {
         public Scissors() : base(GestureType.Scissors)
         {
+            winVerb = new string[] { "cuts", "decapitates" };
+            loseVerb = new string[] { "smashes", "crushes" };
         }
         public override string Display()
         {

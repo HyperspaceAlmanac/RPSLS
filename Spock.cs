@@ -10,6 +10,8 @@ namespace RPSLS
     {
         public Spock() : base(GestureType.Spock)
         {
+            winVerb = new string[] { "smashes", "vaporizes" };
+            loseVerb = new string[] { "poisons", "disproves" };
         }
         public override string Display()
         {

@@ -52,7 +52,7 @@ namespace RPSLS
 
         private void DisplayOptions()
         {
-            Console.WriteLine("These are the available gestures:");
+            Console.WriteLine("These are the available moves:");
             for (int i = 0; i < gestureList.Count; i++)
             {
                 Console.Write((i == 0 ? "" : ", ") + $"{i + 1}: {gestureList[i].Display()}");

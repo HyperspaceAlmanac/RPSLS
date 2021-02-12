@@ -10,6 +10,8 @@ namespace RPSLS
     {
         public Paper() : base(GestureType.Paper)
         {
+            winVerb = new string[] { "disproves", "covers" };
+            loseVerb = new string[] { "cuts", "eats" };
         }
         public override string Display()
         {

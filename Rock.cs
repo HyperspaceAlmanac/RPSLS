@@ -10,6 +10,8 @@ namespace RPSLS
     {
         public Rock() : base(GestureType.Rock)
         {
+            winVerb = new string[] { "crushes", "crushes" };
+            loseVerb = new string[] { "covers", "vaporizes" };
         }
         public override string Display()
         {

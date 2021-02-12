@@ -10,6 +10,8 @@ namespace RPSLS
     {
         public Lizard() : base(GestureType.Lizard)
         {
+            winVerb = new string[] { "poisons", "eats" };
+            loseVerb = new string[] { "crushes", "decapitates" };
         }
         public override string Display()
         {
