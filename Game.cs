@@ -65,7 +65,7 @@ namespace RPSLS
         {
             if (displayRules)
             {
-                Console.WriteLine("Welcome to Rock Paper Scissors Lizard Spock!");
+                Console.WriteLine("Welcome to Rock, Paper, Scissors, Lizard, Spock!");
                 ExplainRules();
                 displayRules = false;
             }
@@ -107,7 +107,7 @@ namespace RPSLS
 
         private GameState SelectRounds()
         {
-            Console.WriteLine("Please enter how many rounds the game is best of(Best of 5 is first to 3, Best of 7 is first to 4):");
+            Console.WriteLine("Please enter how many rounds the game is best of(EX: Best of 5 is first to 3, Best of 7 is first to 4):");
             Console.WriteLine("It should be an odd number from 1-99");
             int result = HandleNumberInput(Console.ReadLine());
             if (result == 0)
@@ -162,14 +162,14 @@ namespace RPSLS
             }
             if (player1.Wins(totalRounds)) {
                 Console.WriteLine("=================");
-                Console.WriteLine($"Player 1 has won {totalRounds / 2 + 1} rounds and is the winner!");
+                Console.WriteLine($"Player 1 has won {totalRounds / 2 + 1} round" + (totalRounds > 1 ? "s" : "") +  "and is the winner!");
                 Console.WriteLine("=================");
                 return GameState.GameOver;
             }
             if (player2.Wins(totalRounds))
             {
                 Console.WriteLine("=================");
-                Console.WriteLine($"Player 2 has won {totalRounds / 2 + 1} rounds and is the winner!");
+                Console.WriteLine($"Player 2 has won {totalRounds / 2 + 1} round" + (totalRounds > 1 ? "s" : "") + "and is the winner!");
                 Console.WriteLine("=================");
                 return GameState.GameOver;
             }
@@ -186,11 +186,16 @@ namespace RPSLS
         {
             Console.WriteLine("=============");
             Console.WriteLine("This game is like Rock, Paper, Scissors, but with two more options");
-            Console.WriteLine("Rock beats Scissors and Lizard, but loses to Paper and Spock");
-            Console.WriteLine("Paper beats Rock and Spock, but loses to Scissors and Lizard");
-            Console.WriteLine("Scissors beats Paper and Lizard, but loses to Spock and Rock");
-            Console.WriteLine("Lizard beats Spock and Paper, but loses to Rock and Scissors");
-            Console.WriteLine("Spock beats Scissors and Rock, but loses to Lizard and Paper");
+            Console.WriteLine("Rock crushes Scissors");
+            Console.WriteLine("Scissors cuts Paper");
+            Console.WriteLine("Paper covers Rock");
+            Console.WriteLine("Rock crushes Lizard");
+            Console.WriteLine("Lizard poisons Spock");
+            Console.WriteLine("Spock smashes Scissors");
+            Console.WriteLine("Scissors decapitates Lizard");
+            Console.WriteLine("Lizard eats Paper");
+            Console.WriteLine("Paper disproves Spock");
+            Console.WriteLine("Spock vaporizes Rock");
             Console.WriteLine("=============");
         }
         private void ExitGamePrompt()
