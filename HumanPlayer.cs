@@ -30,7 +30,8 @@ namespace RPSLS
             do
             {
                 Console.WriteLine("Please Enter a number 1-5:");
-                str = Console.ReadLine();
+                str = Console.ReadKey().KeyChar.ToString();
+                Console.WriteLine();
                 switch (str)
                 {
                     case "1":

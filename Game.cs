@@ -19,9 +19,7 @@ namespace RPSLS
     class Game
     {
         private int totalRounds;
-        private bool playerOneTurn;
         private bool vsNPC;
-        private bool displayRules;
         private Player player1;
         private Player player2;
 
@@ -60,8 +58,8 @@ namespace RPSLS
                         break;
                 }
             }
-            Console.WriteLine("Exiting Game. Press \"Enter\" to close application");
-            Console.ReadLine();
+            Console.WriteLine("Exiting Game. Press anty key to close application");
+            Console.ReadKey();
         }
         private GameState WelcomeScreen()
         {
@@ -179,8 +177,9 @@ namespace RPSLS
                 Console.WriteLine("==============");
                 Console.WriteLine("The score is " + (result == 0 ? "still " : "now ") + $"{player1.RoundsWon()} to {player2.RoundsWon()}. {totalRounds / 2 + 1} points to win");
                 Console.WriteLine("==============");
-                Console.WriteLine("Press \"Enter\" to contiue");
-                Console.ReadLine();
+                Console.WriteLine("Press any key to contiue");
+                Console.ReadKey();
+                Console.WriteLine();
                 return GameState.TakeTurn;
             }
         }

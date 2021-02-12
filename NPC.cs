@@ -39,8 +39,7 @@ namespace RPSLS
         public override void AfterChoice(Gesture g)
         {
             Console.WriteLine("NPC Player " + playerNumber + " has selected " + g.Display());
-            Console.WriteLine("Press \"Enter\" to contiue");
-            Console.ReadLine();
+            //Console.WriteLine();
         }
     }
 }

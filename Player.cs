@@ -29,8 +29,9 @@ namespace RPSLS
         public virtual void AfterChoice(Gesture g)
         {
             Console.WriteLine("Player " + playerNumber + " has selected " + g.Display());
-            Console.WriteLine("Press \"Enter\" to contiue");
-            Console.ReadLine();
+            Console.WriteLine("Press any to contiue");
+            Console.ReadKey();
+            Console.WriteLine();
         }
         public abstract Gesture SelectGesture();
         public void WinsRound()
